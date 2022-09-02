@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Route, useLocation } from "wouter";
-import reactLogo from './assets/react.svg'
 import './App.css'
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from './firebase';
 
+import Menu from './components/Menu/Menu'
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 
@@ -22,6 +22,8 @@ function App() {
 
   return (
     <div className="App">
+      <Menu />
+      
       <Route path='/'><Home /></Route>
       <Route path='/login'><Login /></Route>
     </div>

@@ -25,7 +25,7 @@ function Home () {
     }, [])
 
     return (
-        <div>
+        <div className='underline'>
             <h1>Test</h1>
         {statsDay.map((stat)=>(
             <p>{stat.date}</p>
