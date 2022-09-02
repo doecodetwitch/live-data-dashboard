@@ -1,0 +1,28 @@
+.menu {
+    @apply 
+        w-screen 
+        grid 
+        grid-cols-2;
+}
+
+.logoContainer {
+    @apply 
+        h-full 
+        flex 
+        items-center;
+}
+
+.logo {
+    @apply 
+        pl-4 
+        cursor-pointer;
+}
+
+.logOutButton {
+    @apply 
+        underline 
+        cursor-pointer 
+        justify-self-end 
+        mr-4 
+        my-2;
+}
