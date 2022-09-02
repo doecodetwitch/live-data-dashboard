@@ -1,0 +1,11 @@
+.errorModal {
+    @apply 
+        bg-slate-300
+        p-6
+        text-black
+        w-fit
+        absolute
+        left-1/2
+        top-1/2;
+    transform: translate(-50%, -50%);
+}
