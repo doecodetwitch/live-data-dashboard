@@ -5,6 +5,8 @@ import { auth } from '../../firebase';
 import { useLocation } from "wouter";
 import './Login.css';
 
+import Spinner from "../../components/Spinner/Spinner";
+
 function Login () {
     const [location, setLocation] = useLocation();
     const [userState, loadingState, errorState] = useAuthState(auth);
@@ -40,18 +42,28 @@ function Login () {
 
 
     const wrongPasswordMessage = (
-        <div className="errorModal">
-            <p>This is a wrong password, please try again.</p>
-            <button onClick={()=>(setShouldDisplayWrongPassMessage(false))}>OK</button>
+        <div className="errorModalContainer">
+            <div className="errorModal">
+                <p>This is a wrong password, please try again.</p>
+                <button onClick={()=>(setShouldDisplayWrongPassMessage(false))}>OK</button>
+            </div>
         </div>
     );
 
     const defaultErrorMessage = (
-        <div className="errorModal">
-            <p>Authentication failed, please try again later.</p>
-            <button onClick={()=>(setShouldDisplayDefaultErrorMessage(false))}>OK</button>
+        <div className="errorModalContainer">
+            <div className="errorModal">
+                <p>Authentication failed, please try again later.</p>
+                <button onClick={()=>(setShouldDisplayDefaultErrorMessage(false))}>OK</button>
+            </div>
         </div>
     );
+
+    if(loading){
+        return (
+            <Spinner />
+        );
+    }
 
     return (
         <>
@@ -64,11 +76,16 @@ function Login () {
                 </div> 
             : null}
             <div>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <input name="email" {...register('email', { required: true })} />
-                    {errors.email && <span>This field is required</span>}
-                    <input name="password" {...register('password', { required: true })} />
-                    {errors.password && <span>This field is required</span>}
+                <form onSubmit={handleSubmit(onSubmit)} className='loginForm'>
+                    {console.log(errors)}
+                    <div className="inputContainer">
+                        <input name="email" {...register('email', { required: true })} />
+                        {errors.email && <span className='input-error'>This field is required</span>}
+                    </div>
+                    <div className="inputContainer">
+                        <input name="password" {...register('password', { required: true })} />
+                        {errors.password && <span className='input-error'>This field is required</span>}
+                    </div>
                     <button type="submit">Submit</button>
                 </form>
             </div>

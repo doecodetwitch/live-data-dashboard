@@ -18,7 +18,7 @@ function App() {
     if(user === null && !loading){
         setLocation("/login");
     }
-  }, [user, loading])
+  }, [user, loading, location])
 
   return (
     <div className="App">
