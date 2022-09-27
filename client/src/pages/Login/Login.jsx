@@ -77,13 +77,12 @@ function Login () {
             : null}
             <div>
                 <form onSubmit={handleSubmit(onSubmit)} className='loginForm'>
-                    {console.log(errors)}
                     <div className="inputContainer">
-                        <input name="email" {...register('email', { required: true })} />
+                        <input name="email" placeholder="email" {...register('email', { required: true })} />
                         {errors.email && <span className='input-error'>This field is required</span>}
                     </div>
                     <div className="inputContainer">
-                        <input name="password" {...register('password', { required: true })} />
+                        <input name="password" placeholder="password" {...register('password', { required: true })} />
                         {errors.password && <span className='input-error'>This field is required</span>}
                     </div>
                     <button type="submit">Submit</button>
