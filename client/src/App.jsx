@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { Route, useLocation } from "wouter";
 import './App.css'
 
@@ -18,7 +18,7 @@ function App() {
     if(user === null && !loading){
         setLocation("/login");
     }
-  }, [user, loading])
+  }, [user, loading, location])
 
   return (
     <div className="App">

@@ -1,0 +1,63 @@
+.dashboardContainer {
+    @apply
+        mt-10
+        mx-4;
+}
+
+.dashboardHeader {
+    @apply 
+        grid
+        grid-cols-4
+        items-center;
+}
+
+.dashboardData {
+    @apply
+        bg-white
+        min-h-[300px]
+        mt-4
+        grid
+        grid-cols-3
+        text-left
+        no-underline;
+}
+
+.dashboardData > div {
+    @apply 
+        p-5;
+}
+
+.marketSelect {
+    @apply
+        outline-none
+        appearance-none
+        w-fit
+        justify-self-end
+        cursor-pointer;
+}
+
+.dateInput {
+    @apply 
+        border-transparent
+        border-2
+        ml-5
+        outline-none
+        py-[0.6em]
+        px-[1.2em];
+}
+
+.h2 {
+    @apply 
+        text-xl
+        mb-3;
+}
+
+.dayPickerContainer{
+    @apply
+        fixed
+        top-1/2
+        left-1/2
+        bg-white;
+    transform: translate(-50%, -50%);
+    border: 0.2em solid #242424;
+}

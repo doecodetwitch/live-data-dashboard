@@ -1,0 +1,67 @@
+.errorModalContainer {
+    @apply
+        backdrop-blur-sm
+        p-6
+        text-black
+        w-full
+        h-full
+        absolute
+        left-0
+        right-0
+        top-0
+        bottom-0;
+}
+
+.errorModal {
+    @apply
+        bg-white
+        p-6
+        min-h-[200px]
+        text-black
+        w-fit
+        absolute
+        left-1/2
+        top-1/2
+        flex
+        flex-col
+        justify-center;
+    transform: translate(-50%, -50%);
+}
+
+.errorModal button {
+    @apply
+        bg-black
+        text-white
+        mt-4;
+}
+
+.loginForm {
+    @apply
+        flex
+        flex-col
+        mx-auto
+        max-w-sm
+        mt-10;
+}
+
+.loginForm input {
+    @apply
+        mb-4
+        outline-none
+        p-2
+        w-full;
+}
+
+.input-error {
+    @apply
+        absolute
+        left-0
+        text-xs
+        -mt-2
+        text-red-700;
+}
+
+.inputContainer {
+    @apply
+        relative;
+}

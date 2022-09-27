@@ -7,4 +7,4 @@
 
 ## The ways we do it
 
-1. We don't use tailwind classes in components. We use @appy directive in css files. * less clutter *
+1. We don't use tailwind classes in components. We use @appy directive in css files. ** less clutter **

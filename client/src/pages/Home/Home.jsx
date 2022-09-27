@@ -1,35 +1,53 @@
-import { useState, useEffect } from 'react';
-import { db } from "./../../firebase";
-import { collection, getDocs } from 'firebase/firestore/lite';
+import { useState } from 'react';
+import useFetchStatsDay from '../../hooks/useFetchStatsDay';
+
+import Spinner from "../../components/Spinner/Spinner";
+import Dashbaord from '../../components/Dashboard/Dashboard';
+import { useEffect } from 'react';
+import { DateTime } from "luxon";
 
 function Home () {
-    const [statsDay, setStatsDay] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [date, setDate] = useState(null);
+    const [market, setMarket] = useState(null);
 
-    async function getStatsDay(db) {
-        const dayStatsCol = collection(db, 'stats_day');
-        const dayStatsSnapshot = await getDocs(dayStatsCol);
-        const dayStatsList = dayStatsSnapshot.docs.map(doc => doc.data());
-        return dayStatsList;
-    }
-
-    //fetch data
     useEffect(()=>{
-        const fetchStatsDay = async () => {
-        const getStatsDayCall = getStatsDay(db)
-        getStatsDayCall.then((data, error)=>{
-            setStatsDay(data)
-        })
+        if(!date){
+            const now = DateTime.now().setZone("Europe/Warsaw");
+            setDate(now.toFormat('dd-MM-yyyy'))
+            console.log(date)
         }
-    
-        fetchStatsDay()
+
+        if(!market){
+            setMarket('Germany');
+        }
     }, [])
 
+    const stopLoading = () => {
+        setLoading(false);
+    }
+
+    const changeDateAndMarket = (newDate, newMarket) => {
+        setDate(newDate);
+        setMarket(newMarket);
+    }
+
+    const statsDay = useFetchStatsDay(date, market, stopLoading);
+
+    if(loading) {
+        return (
+            <Spinner />
+        );
+    }
+
     return (
-        <div className='underline'>
-            <h1>Test</h1>
-        {statsDay.map((stat)=>(
-            <p>{stat.date}</p>
-        ))}
+        <div>
+            <Dashbaord 
+                statsDay={statsDay} 
+                handleChangeDateAndMarket={changeDateAndMarket} 
+                theDate={date}
+                theMarket={market}
+            />
         </div>
     );
 }

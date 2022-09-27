@@ -1,8 +1,10 @@
 .menu {
     @apply 
-        w-screen 
+        w-full 
         grid 
-        grid-cols-2;
+        grid-cols-2
+        bg-slate-200
+        my-2;
 }
 
 .logoContainer {
@@ -23,6 +25,5 @@
         underline 
         cursor-pointer 
         justify-self-end 
-        mr-4 
-        my-2;
+        mr-4;
 }
